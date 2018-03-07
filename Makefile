@@ -8,6 +8,7 @@ all: install zshrc
 install:
 	@ln -s $(PWD)/file_rc/ ~/.file_rc/
 	@cp -v $(PWD)/.gitconfig ~/
+	@cp -vr $(PWD)/ssh ~/.ssh
 
 .PHONY zshrc
 zshrc:
