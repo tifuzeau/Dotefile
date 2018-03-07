@@ -1,0 +1,27 @@
+### GENERAL ###
+
+Port 22
+Protocol 2,1
+
+### GIT ###
+
+Host github.com
+	HostName github.com
+	PreferredAuthentications publickey
+	User git
+	IdentityFile ~/.ssh/git/github
+	IdentitiesOnly yes
+
+Host framagit.org
+	HostName framagit.org
+	PreferredAuthentications publickey
+	User git
+	IdentityFile ~/.ssh/git/framagit
+	IdentitiesOnly yes
+
+Host gitlab.com
+	HostName gitlab.com
+	PreferredAuthentications publickey
+	User git
+	IdentityFile ~/.ssh/git/gitlab
+	IdentitiesOnly yes
