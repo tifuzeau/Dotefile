@@ -1,0 +1,18 @@
+#############################################
+### File for load all otheur source file  ###
+#############################################
+
+#
+# var of env
+#
+source $RC_PATH/var_env.rc
+
+#
+# alias
+#
+source $RC_PATH/alias.rc
+
+#
+# small script
+#
+source $RC_PATH/fonction.rc

@@ -1,0 +1,18 @@
+#############################
+### File for my all alias ###
+### more complex ist in   ###
+### fonction file         ###
+###                       ###
+### alias syn :           ###
+### alias name="cmd"      ###
+#############################
+
+## Utile ##
+
+alias	home-size="cd ; du -hd1"
+alias	cp="cp -v"
+
+### Dev ###
+
+alias	vi="vim"
+alias	gcc="gcc -Wall -Wextra -Werror"

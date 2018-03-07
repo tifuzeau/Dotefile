@@ -1,0 +1,7 @@
+[user]
+	email = tifuzeau@student.42.fr
+	name = Timothee FUZEAU
+[core]
+	editor = vim
+[push]
+	default = matching
