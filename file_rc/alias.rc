@@ -12,6 +12,9 @@
 alias	home-size="cd ; du -hd1"
 alias	cp="cp -v"
 
+alias pbcopy="xclip -selection clipboardr"
+alias pbpaste="xclip -selection clipboard -o"
+
 ### Dev ###
 
 alias	vi="vim"
