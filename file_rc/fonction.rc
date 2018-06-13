@@ -8,42 +8,60 @@
 
 man() {
 	env \
-		LESS_TERMCAP_mb=$(printf '\e[1;31m') \
-		LESS_TERMCAP_md=$(printf '\e[1;31m') \
-		LESS_TERMCAP_me=$(printf '\e[0m')    \
-		LESS_TERMCAP_se=$(printf '\e[0m')    \
-		LESS_TERMCAP_so=$(printf '\e[1;44;33m') \
-		LESS_TERMCAP_ue=$(printf '\e[0m')    \
-		LESS_TERMCAP_us=$(printf '\e[1;32m') \
+		LESS_TERMCAP_mb=$(printf '\e[1;31m')		\
+		LESS_TERMCAP_md=$(printf '\e[1;31m')		\
+		LESS_TERMCAP_me=$(printf '\e[0m')				\
+		LESS_TERMCAP_se=$(printf '\e[0m')				\
+		LESS_TERMCAP_so=$(printf '\e[1;44;33m')	\
+		LESS_TERMCAP_ue=$(printf '\e[0m')				\
+		LESS_TERMCAP_us=$(printf '\e[1;32m')		\
 		PAGER='less' \
 		man "$@"
 }
 
 
+#
+# extract all type of file
+#
+
 extract () {
-    if [ -f $1 ]; then
-        case $1 in
-            *.tar.bz2)  tar -jxvf $1                        ;;
-            *.tar.gz)   tar -zxvf $1                        ;;
-            *.bz2)      bunzip2 $1                          ;;
-            *.dmg)      hdiutil mount $1                    ;;
-            *.gz)       gunzip $1                           ;;
-            *.tar)      tar -xvf $1                         ;;
-            *.tbz2)     tar -jxvf $1                        ;;
-            *.tgz)      tar -zxvf $1                        ;;
-            *.zip)      unzip $1                            ;;
-            *.ZIP)      unzip $1                            ;;
-            *.pax)      cat $1 | pax -r                     ;;
-            *.pax.Z)    uncompress $1 --stdout | pax -r     ;;
-            *.Z)        uncompress $1                       ;;
-            *.rar)      unrar e $1                          ;;
-			*)          echo "'$1' cannot be extracted/mounted via extract()" ;;
-        esac
-    else
-        echo "'$1' is not a valid file"
-    fi
+	if [ -f $1 ]; then
+		case $1 in
+			*.tar.bz2)		tar -jxvf $1											;;
+			*.tar.gz)			tar -zxvf $1											;;
+			*.bz2)				bunzip2 $1												;;
+			*.dmg)				hdiutil mount $1									;;
+			*.gz)					gunzip $1													;;
+			*.tar)				tar -xvf $1												;;
+			*.tbz2)				tar -jxvf $1											;;
+			*.tgz)				tar -zxvf $1											;;
+			*.zip)				unzip $1													;;
+			*.ZIP)				unzip $1													;;
+			*.pax)				cat $1 | pax -r										;;
+			*.pax.Z)			uncompress $1 --stdout | pax -r		;;
+			*.Z)					uncompress $1											;;
+			*.rar)				unrar e $1												;;
+			*)						echo "'$1' cannot be extracted/mounted via extract()" ;;
+		esac
+	else
+		echo "'$1' is not a valid file"
+	fi
 }
 
+#
+# in testing
+#
+
+linux_file() {
+	TMP_DIR="/tmp/tmp_linux_file"
+
+	mkdir -p $TMP_DIR
+	for file in $@
+		do
+			cp $file $TMP_DIR/$file.save
+			sed -i -e 's/\r//g' $file
+		done
+}
 
 #
 # chheader for change old header in new
