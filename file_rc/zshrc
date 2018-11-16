@@ -49,7 +49,7 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git pip docker)
 
 # User configuration
 
@@ -86,3 +86,6 @@ export LANG=en_US.UTF-8
 # source.rc source all other file
 RC_PATH=~/.file_rc
 source $RC_PATH/source.rc
+
+# Run script or bin at login
+archey3
