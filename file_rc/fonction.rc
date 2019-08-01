@@ -50,7 +50,7 @@ extract () {
 }
 
 #
-# in testing
+# replace all \r => \n
 #
 
 linux_file() {
@@ -61,17 +61,5 @@ linux_file() {
 		do
 			cp $file $TMP_DIR/$file.save
 			sed -i -e 's/\r//g' $file
-		done
-}
-
-#
-# chheader for change old header in new
-# use only in school
-#
-
-chheader() {
-	for file in $@
-		do
-			vim -c 1d13 -c Stdheader -c wq $file
 		done
 }

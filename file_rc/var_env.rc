@@ -1,9 +1,4 @@
-######################################
-### File for export all var of env ###
-###                                ###
-### syn : export	var="valu"     ###
-######################################
-
 export RC_PATH=$RC_PATH
-export MAIL="tifuzeau@student.42.fr"
+export MAIL="tifuzeau@gmail.com"
 export EDITOR="vim"
+

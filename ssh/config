@@ -9,19 +9,19 @@ Host github.com
 	HostName github.com
 	PreferredAuthentications publickey
 	User git
-	IdentityFile ~/.ssh/git/github
+	IdentityFile ~/.ssh/git/github/github.privat
 	IdentitiesOnly yes
 
 Host framagit.org
 	HostName framagit.org
 	PreferredAuthentications publickey
 	User git
-	IdentityFile ~/.ssh/git/framagit
+	IdentityFile ~/.ssh/git/framagit/framagit.privat
 	IdentitiesOnly yes
 
 Host gitlab.com
 	HostName gitlab.com
 	PreferredAuthentications publickey
 	User git
-	IdentityFile ~/.ssh/git/gitlab
+	IdentityFile ~/.ssh/git/gitlab/gitlab.privat
 	IdentitiesOnly yes
