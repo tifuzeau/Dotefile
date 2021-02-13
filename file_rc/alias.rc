@@ -11,3 +11,9 @@ alias pbpaste="xclip -selection clipboard -o"
 
 alias	vi="vim"
 alias	gcc="gcc -Wall -Wextra -Werror"
+
+### Docker help ###
+alias	docker_stop_all="docker stop $(docker ps --all --quiet)"
+alias	docker_rm_all="docker rm $(docker ps --all --quiet)"
+alias	docker_rmi_all="docker rmi $(docker images --quiet)"
+#alias	docker_rmi_untag="docker rmi $(docker images | grep \"^<none>\" | awk '{print $3}')"
