@@ -6,7 +6,8 @@
 # man pager in color
 #
 
-man() {
+man ()
+{
 	env \
 		LESS_TERMCAP_mb=$(printf '\e[1;31m')		\
 		LESS_TERMCAP_md=$(printf '\e[1;31m')		\
@@ -24,7 +25,8 @@ man() {
 # extract all type of file
 #
 
-extract () {
+extract ()
+{
 	if [ -f $1 ]; then
 		case $1 in
 			*.tar.bz2)			tar -jxvf $1						;;
@@ -53,7 +55,8 @@ extract () {
 # replace all \r => \n
 #
 
-linux_file() {
+linux_file ()
+{
 	TMP_DIR="/tmp/tmp_linux_file"
 
 	mkdir -p $TMP_DIR
@@ -62,4 +65,64 @@ linux_file() {
 			cp $file $TMP_DIR/$file.save
 			sed -i -e 's/\r//g' $file
 		done
+}
+
+#
+# virtualenv python3 help
+#
+
+pyenv ()
+{
+
+	PATH_ENV_START="env/bin/activate"
+
+# return code
+SUCCESS=0
+ERR_USAGE=1
+ERR_ALREADY_EXISTS=2
+ERR_NOT_FOUND=3
+
+	case "$1" in
+		init)
+			if [ -e "env" ]
+				then
+				echo "env already exists"
+				return ERR_ALREADY_EXISTS
+			fi
+			if [ -d ".git" ]
+				then
+				virtualenv -p python3 env
+				echo "env/" >> .gitignore
+			else
+				echo "You are not on git repository"
+			fi
+		;;
+		start)
+			if [ -f $PATH_ENV_START ]
+				then
+				source $PATH_ENV_START
+				echo "successful launch"
+			else
+				echo "pyenv: $PATH_ENV_START not found"
+				return $ERR_NOT_FOUND
+			fi
+		;;
+		stop)
+			deactivate
+		;;
+		freeze)
+			if [ -d ".git" ]
+				then
+				pip freeze > requirements.txt
+				echo "successful freeze"
+			else
+				echo "You are not in git repository"
+			fi
+		;;
+		*)
+			echo "Usage: {init|start|stop}"
+			return $ERR_USAGE
+		;;
+	esac
+	return $SUCCESS
 }
